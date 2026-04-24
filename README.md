@@ -1,121 +1,121 @@
-# QML算法、数据集与传统模型对应关系及泛化指标综合报告
+# Comprehensive Report on the Corresponding Relationships and Generalization Metrics of QML Algorithms, Datasets and Traditional Models
 
-## 1. QML算法详细分类与说明
+## 1\. Detailed Classification and Explanation of QML Algorithms
 
-### 1.1 基础量子算法（Foundational Algorithms）
+### 1\.1 Foundational Quantum Algorithms
 
-| 算法名称                         | 缩写   | 提出时间 | 核心原理                                                     | 时间复杂度                                | 典型应用                                  | 参考文献 |
-| -------------------------------- | ------ | -------- | ------------------------------------------------------------ | ----------------------------------------- | ----------------------------------------- | -------- |
-| **Grover's Algorithm**           | Grover | 1996     | 振幅放大，通过Oracle标记目标状态，反复应用扩散变换增强目标态振幅 | $O(\sqrt{N})$  vs 经典 $O(N)$             | 无序数据库搜索、密码分析（如DES密钥搜索） | [11]     |
-| **Bernstein-Vazirani Algorithm** | BV     | 1993     | 利用量子并行性，通过单次查询确定隐藏二进制串                 | $O(1)$ vs 经典 $O(n)$                     | 量子电路诊断、量子密码协议验证            | [12]     |
-| **Shor's Algorithm**             | Shor   | 1994     | 将整数分解转化为周期寻找问题，利用QFT提取周期                | $O((\log N)^2 \log \log N)$ vs 经典指数级 | RSA密码破解、离散对数问题                 | [13]     |
-| **Quantum Fourier Transform**    | QFT    | 1994     | 量子态的离散傅里叶变换，将计算基态映射到频率空间             | $O(n^2)$ vs 经典 $O(n2^n)$                | Shor算法、相位估计、量子信号处理          | [14]     |
+| Algorithm Name                    | Abbreviation | Proposed Year | Core Principle                                               | Time Complexity                                      | Typical Applications                                         | References |
+| --------------------------------- | ------------ | ------------- | ------------------------------------------------------------ | ---------------------------------------------------- | ------------------------------------------------------------ | ---------- |
+| **Grover\&\#39;s Algorithm**      | Grover       | 1996          | Amplitude amplification: mark the target state via Oracle, and repeatedly apply diffusion transformation to enhance the amplitude of the target state | $O(\sqrt{N})$ vs classical $O(N)$                    | Unordered database search, cryptanalysis \(e\.g\., DES key search\) | \[11\]     |
+| **Bernstein\-Vazirani Algorithm** | BV           | 1993          | Utilize quantum parallelism to determine the hidden binary string through a single query | $O(1)$ vs classical $O(n)$                           | Quantum circuit diagnosis, quantum cryptographic protocol verification | \[12\]     |
+| **Shor\&\#39;s Algorithm**        | Shor         | 1994          | Reduce integer factorization to the problem of period finding, and extract the period using QFT | $O((\log N)^2 \log \log N)$ vs classical exponential | RSA cryptanalysis, discrete logarithm problem                | \[13\]     |
+| **Quantum Fourier Transform**     | QFT          | 1994          | Discrete Fourier transform of quantum states, mapping computational basis states to frequency space | $O(n^2)$ vs classical $O(n2^n)$                      | Shor\&\#39;s algorithm, phase estimation, quantum signal processing | \[14\]     |
 
-### 1.2 量子监督学习算法（Supervised Learning）
+### 1\.2 Quantum Supervised Learning Algorithms
 
-| 算法名称                                         | 缩写 | 核心原理                                                     | 量子优势                                                 | 典型应用           | 参考文献 |
-| ------------------------------------------------ | ---- | ------------------------------------------------------------ | -------------------------------------------------------- | ------------------ | -------- |
-| **Quantum Support Vector Machine**               | QSVM | 使用量子电路计算核函数 $K_{ij} = \|\langle \phi(x_i) \| \phi(x_j) \rangle\|^2$，在指数级希尔伯特空间中计算内积 | 利用量子叠加态隐式映射到高维空间                         | 图像识别、分类任务 | [8]      |
-| **Variational Quantum Classification Algorithm** | VQCA | 参数化量子电路 $U(\theta)$ 编码数据，通过经典优化器调整参数最小化损失函数 | 利用量子纠缠和叠加增强模型表达能力                       | 二分类、多分类任务 | [22]     |
-| **Quantum Neural Network**                       | QNN  | 量子神经元模型，由编码电路 $U_\phi$ 和变分电路 $U_\theta$ 组成，状态演化：$ \|\psi(\theta)\rangle = U_\theta U_\phi \|0\rangle $ | 在希尔伯特空间中操作，可能避免梯度消失问题（需特定设计） | 图像识别、模式识别 | [10]     |
-| **PegasosQSVM**                                  | -    | QSVM的变体，结合Pegasos算法（原始对偶梯度下降），支持大规模数据集 | 更好的可扩展性，支持稀疏解                               | 大规模分类任务     | [9]      |
+| Algorithm Name                                   | Abbreviation | Core Principle                                               | Quantum Advantage                                            | Typical Applications                                     | References |
+| ------------------------------------------------ | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------------------------------------- | ---------- |
+| **Quantum Support Vector Machine**               | QSVM         | Use quantum circuits to compute the kernel function $K_{ij} = |\langle \phi(x_i) | \phi(x_j) \rangle|^2$, and calculate inner products in the exponential\-dimensional Hilbert space | Implicitly map to high\-dimensional space using quantum superposition | Image recognition, classification tasks                  | \[8\]      |
+| **Variational Quantum Classification Algorithm** | VQCA         | Parameterized quantum circuit $U(\theta)$ encodes data, and adjust parameters via classical optimizers to minimize the loss function | Enhance model expressiveness using quantum entanglement and superposition | Binary classification, multi\-class classification tasks | \[22\]     |
+| **Quantum Neural Network**                       | QNN          | Quantum neuron model consisting of encoding circuit $U_\phi$ and variational circuit $U_\theta$, with state evolution: $|\psi(\theta)\rangle = U_\theta U_\phi |0\rangle$ | Operate in Hilbert space, potentially avoiding the vanishing gradient problem \(specific design required\) | Image recognition, pattern recognition                   | \[10\]     |
+| **PegasosQSVM**                                  | \-           | A variant of QSVM that combines the Pegasos algorithm \(primal\-dual gradient descent\) to support large\-scale datasets | Better scalability and support for sparse solutions          | Large\-scale classification tasks                        | \[9\]      |
 
-### 1.3 量子深度学习算法（Deep Learning）
+### 1\.3 Quantum Deep Learning Algorithms
 
-| 算法名称                                   | 缩写  | 架构特点                                                     | 核心创新                                   | 典型应用                                 | 参考文献 |
-| ------------------------------------------ | ----- | ------------------------------------------------------------ | ------------------------------------------ | ---------------------------------------- | -------- |
-| **Quantum Convolutional Neural Network**   | QCNN  | 交替量子卷积层（局部酉变换）和池化层（测量丢弃或条件操作）   | 对数级电路深度，平移不变性，抗噪声能力强   | 量子态识别、图像分类、信号处理           | [26]     |
-| **Quantum Long Short-Term Memory**         | QLSTM | 将LSTM的门机制用量子电路实现：$f_t = U_{\theta_f}(x_t, h_{t-1})$，$i_t = U_{\theta_i}(x_t, h_{t-1})$等 | 利用量子纠缠建模时序依赖，可能缓解梯度消失 | 时间序列预测、自然语言处理、量子信号处理 | [22]     |
-| **Quantum Generative Adversarial Network** | QGAN  | 生成器 $U_G(\theta)$ 和判别器 $U_D(\phi)$ 均为量子电路，对抗训练 | 能够学习量子数据分布，生成真实量子态       | 量子数据生成、分布学习                   | [137]    |
-| **Quantum Boltzmann Machine**              | QBM   | 由哈密顿量 $H(\lambda) = H_Z + H_X$ 定义量子热态 $\rho_\lambda = \frac{e^{-\beta H(\lambda)}}{\text{Tr}(e^{-\beta H(\lambda)})}$ | 利用量子隧穿效应，可能逃离局部最优         | 量子物理系统建模、量子数据学习           | [90]     |
+| Algorithm Name                             | Abbreviation | Architectural Features                                       | Core Innovation                                              | Typical Applications                                         | References |
+| ------------------------------------------ | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| **Quantum Convolutional Neural Network**   | QCNN         | Alternate quantum convolutional layers \(local unitary transformations\) and pooling layers \(measurement discard or conditional operations\) | Logarithmic circuit depth, translation invariance, strong noise resistance | Quantum state recognition, image classification, signal processing | \[26\]     |
+| **Quantum Long Short\-Term Memory**        | QLSTM        | Implement the gate mechanism of LSTM with quantum circuits: $f_t = U_{\theta_f}(x_t, h_{t-1})$, $i_t = U_{\theta_i}(x_t, h_{t-1})$, etc\. | Model temporal dependencies using quantum entanglement, potentially alleviating vanishing gradients | Time series prediction, natural language processing, quantum signal processing | \[22\]     |
+| **Quantum Generative Adversarial Network** | QGAN         | Both generator $U_G(\theta)$ and discriminator $U_D(\phi)$ are quantum circuits, trained adversarially | Capable of learning quantum data distributions and generating realistic quantum states | Quantum data generation, distribution learning               | \[137\]    |
+| **Quantum Boltzmann Machine**              | QBM          | Quantum thermal state $\rho_\lambda = \frac{e^{-\beta H(\lambda)}}{\text{Tr}(e^{-\beta H(\lambda)})}$ defined by Hamiltonian $H(\lambda) = H_Z + H_X$ | Utilize quantum tunneling effect to potentially escape local optima | Quantum physical system modeling, quantum data learning      | \[90\]     |
 
-### 1.4 量子强化学习算法（Reinforcement Learning）
+### 1\.4 Quantum Reinforcement Learning Algorithms
 
-| 算法名称                    | 缩写 | 架构特点                                                     | 学习机制                                                     | 典型应用               | 参考文献 |
-| --------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------- | -------- |
-| **Quantum Q-Learning**      | QQL  | 状态-动作对 $(s,a)$ 编码为参数化电路 $U_Q(\theta_{s,a})$，Q值从测量结果获得 | TD更新：$Q(s,a) \leftarrow Q(s,a) + \alpha[r + \gamma \max_{a'} Q(s',a') - Q(s,a)]$ | 迷宫导航、网格世界任务 | [21]     |
-| **Quantum Policy Gradient** | QPG  | 策略 $\pi_\theta(a \mid s)$ 由量子电路编码，动作采样自测量结果 | 策略梯度：$\nabla_\theta J(\theta) = \mathbb{E}[\nabla_\theta \log \pi_\theta(a \mid s) Q^\pi(s,a)]$ | 连续控制、策略优化     | [26]     |
+| Algorithm Name              | Abbreviation | Architectural Features                                       | Learning Mechanism                                           | Typical Applications                    | References |
+| --------------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------------------------- | ---------- |
+| **Quantum Q\-Learning**     | QQL          | State\-action pairs $(s,a)$ are encoded into parameterized circuits $U_Q(\theta_{s,a})$, and Q\-values are obtained from measurement results | TD update: $Q(s,a) \leftarrow Q(s,a) + \alpha[r + \gamma \max_{a'} Q(s',a') - Q(s,a)]$ | Maze navigation, grid world tasks       | \[21\]     |
+| **Quantum Policy Gradient** | QPG          | Policy $\pi_\theta(a \mid s)$ is encoded by quantum circuits, and actions are sampled from measurement results | Policy gradient: $\nabla_\theta J(\theta) = \mathbb{E}[\nabla_\theta \log \pi_\theta(a \mid s) Q^\pi(s,a)]$ | Continuous control, policy optimization | \[26\]     |
 
-### 1.5 量子优化算法（Optimization）
+### 1\.5 Quantum Optimization Algorithms
 
-| 算法名称                                       | 缩写 | 核心原理                                                     | 数学表达                                                     | 典型应用              | 参考文献 |
-| ---------------------------------------------- | ---- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------------- | -------- |
-| **Quantum Approximate Optimization Algorithm** | QAOA | 交替应用问题哈密顿量 $H_C$ 和混合哈密顿量 $H_M$，参数优化求解组合优化问题 | $|\psi(\gamma,\beta)\rangle = \prod_{j=1}^p e^{-i\beta_j H_M} e^{-i\gamma_j H_C} |+\rangle^{\otimes n}$ | Max-Cut、组合优化问题 | [35]     |
-| **Variational Quantum Eigensolver**            | VQE  | 参数化电路制备拟设态，测量能量期望值，经典优化最小化能量     | $E(\theta) = \langle \psi(\theta) \| H \| \psi(\theta) \rangle$ | 量子化学、材料模拟    | [67]     |
-
----
-
-## 2. 量子数据集详细说明
-
-### 2.1 专用量子数据集
-
-| 数据集名称                             | 来源机构 | 数据类型              | 规模                                     | 编码方式                    | 适用任务                             | 特点                                                         | 参考文献 |
-| -------------------------------------- | -------- | --------------------- | ---------------------------------------- | --------------------------- | ------------------------------------ | ------------------------------------------------------------ | -------- |
-| **QDataSet**                           | 独立研究 | 经典数据+量子电路表示 | 多种规模                                 | 角度编码、振幅编码、IQP编码 | 分类、回归、生成建模                 | 提供标准化数据划分，包含元数据描述编码过程，支持Qiskit直接加载 | [88]     |
-| **Pennylane Quantum Datasets**         | Xanadu   | 经典数据、分子数据    | 小规模                                   | 多种预设编码                | 教学、基准测试、混合模型验证         | 包含moon数据集（二分类）、H₂分子、LiH分子等，与PennyLane无缝集成 | [87]     |
-| **Open Quantum Data Commons(OpenQDC)** | 开源社区 | 分子几何数据          | 15亿+几何结构，70+原子种类，250+量子方法 | N/A                         | 量子化学、材料模拟、密度泛函理论验证 | 超大规模，标准化元数据，Python API支持，高效格式存储         | [79]     |
-
-### 2.2 经典数据集量子化版本
-
-| 原始数据集                                       | 量子化版本用途 | 常用编码方式       | **作用 / 模型表现**                                          | 典型应用文献      |
-| ------------------------------------------------ | -------------- | ------------------ | ------------------------------------------------------------ | ----------------- |
-| **MNIST**                                        | 手写数字识别   | 振幅编码、角度编码 | 被用于混合卷积结构（Parameterized Quantum Circuits 作为滑动核）的性能测试 。 | [31]、[40]、[134] |
-| **Iris**                                         | 花卉分类       | 角度编码、基础编码 | 用于测试变分量子分类器（VQC）等基础分类模型 。               | [134]             |
-| **Fashion-MNIST**                                | 服装图像分类   | 振幅编码           | 在混合架构和鲁棒性评估中被广泛使用，SHQCNN 模型在此数据集上表现出色 。 | [113]、[57]       |
-| **CIFAR-10/100**                                 | 物体识别       | 振幅编码、幅度编码 | 用于评估“平衡量子神经架构搜索 (BQNAS)”模型，准确率分别达到 97.27% 和 81.36%。 | [132]             |
-| **GossipCop/PolitiFact**                         | 假新闻检测     | 振幅编码           | QMFND（量子多模态融合模型）使用这两个文本/多模态数据集来检测社交媒体上的虚假新闻 。 | [98]              |
-| **心血管疾病数据集**                             | 疾病诊断       | 角度编码           | QuCardio项目，用心血管疾病数据，准确率97.31%                 | [94]              |
-| **Breast Cancer Dataset (乳腺癌数据集)**         | 医疗诊断       | 振幅编码、角度编码 | 用于将量子层集成到 CNN 中进行诊断，展示了在大规模医疗数据上的泛化能力 。 | [125]             |
-| **Potentially Hazardous Asteroids (危险小行星)** | 行星分类       |                    | 使用 VQCA 和 PegasosQSVM 对小行星进行分类，准确率达到 98.11%。 | [9]、[122]        |
-
-
+| Algorithm Name                                 | Abbreviation | Core Principle                                               | Mathematical Expression                                      | Typical Applications                                         | References                 |                                               |        |
+| ---------------------------------------------- | ------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | -------------------------- | --------------------------------------------- | ------ |
+| **Quantum Approximate Optimization Algorithm** | QAOA         | Alternately apply problem Hamiltonian $H_C$ and mixing Hamiltonian $H_M$, and solve combinatorial optimization problems via parameter optimization | $                                                            | \\psi\(\\gamma,\\beta\)\\rangle = \\prod\_\{j=1\}^p e^\{\-i\\beta\_j H\_M\} e^\{\-i\\gamma\_j H\_C\} | \+\\rangle^\{\\otimes n\}$ | Max\-Cut, combinatorial optimization problems | \[35\] |
+| **Variational Quantum Eigensolver**            | VQE          | Prepare ansatz states with parameterized circuits, measure the expected energy value, and minimize energy via classical optimization | $E(\theta) = \langle \psi(\theta) | H | \psi(\theta) \rangle$ | Quantum chemistry, material simulation                       | \[67\]                     |                                               |        |
 
 ---
 
-## 3. QML与传统模型对应关系详解
+## 2\. Detailed Explanation of Quantum Datasets
 
-### 3.1 监督学习模型对应
+### 2\.1 Specialized Quantum Datasets
 
-| QML模型         | 对应传统模型           |
-| --------------- | ---------------------- |
-| **QSVM**        | SVM（核方法）          |
-| **VQCA**        | 逻辑回归/浅层神经网络  |
-| **QNN**         | 经典神经网络 (ANN/MLP) |
-| **PegasosQSVM** | Pegasos-SVM            |
+| Dataset Name                             | Source Institution    | Data Type                                        | Scale                                                        | Encoding Method                                  | Applicable Tasks                                             | References |
+| ---------------------------------------- | --------------------- | ------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------ | ---------- |
+| **QDataSet**                             | Independent Research  | Classical data \+ quantum circuit representation | Various scales                                               | Angle encoding, amplitude encoding, IQP encoding | Classification, regression, generative modeling              | \[88\]     |
+| **Pennylane Quantum Datasets**           | Xanadu                | Classical data, molecular data                   | Small scale                                                  | Multiple preset encodings                        | Teaching, benchmarking, hybrid model verification            | \[87\]     |
+| **Open Quantum Data Commons\(OpenQDC\)** | Open Source Community | Molecular geometry data                          | 1\.5 billion\+ geometric structures, 70\+ atomic species, 250\+ quantum methods | N/A                                              | Quantum chemistry, material simulation, density functional theory verification | \[79\]     |
 
-### 3.2 深度学习模型对应
+### 2\.2 Quantumized Versions of Classical Datasets
 
-| QML模型   | 对应传统模型                    |
-| --------- | ------------------------------- |
-| **QCNN**  | 卷积神经网络（CNN）             |
-| **QLSTM** | 长短期记忆网络（LSTM）          |
-| **QGAN**  | 生成对抗网络（GAN）             |
-| **QBM**   | 玻尔兹曼机（Boltzmann Machine） |
-
-### 3.3 强化学习模型对应
-
-| QML模型 | 对应传统模型                     |
-| ------- | -------------------------------- |
-| **QQL** | Q-Learning（表格型）             |
-| **QPG** | Policy Gradient（策略梯度方法 ） |
-
-### 3.4 优化算法对应
-
-| QML模型  | 对应传统模型                 |
-| -------- | ---------------------------- |
-| **QAOA** | 组合优化求解器（如模拟退火） |
-| **VQE**  | 变分法（经典）               |
+| Original Dataset                    | Purpose of Quantumized Version | Common Encoding Methods                | **Effect / Model Performance**                               | Typical Reference Literatures |
+| ----------------------------------- | ------------------------------ | -------------------------------------- | ------------------------------------------------------------ | ----------------------------- |
+| **MNIST**                           | Handwritten digit recognition  | Amplitude encoding, angle encoding     | Used to test the performance of hybrid convolutional structures \(Parameterized Quantum Circuits as sliding kernels\)\. | \[31\], \[40\], \[134\]       |
+| **Iris**                            | Flower classification          | Angle encoding, basic encoding         | Used to test basic classification models such as Variational Quantum Classifier \(VQC\)\. | \[134\]                       |
+| **Fashion\-MNIST**                  | Clothing image classification  | Amplitude encoding                     | Widely used in hybrid architecture and robustness evaluation, with the SHQCNN model achieving excellent performance on this dataset\. | \[113\], \[57\]               |
+| **CIFAR\-10/100**                   | Object recognition             | Amplitude encoding, magnitude encoding | Used to evaluate the \&\#34;Balanced Quantum Neural Architecture Search \(BQNAS\)\&\#34; model, with accuracy rates reaching 97\.27% and 81\.36% respectively\. | \[132\]                       |
+| **GossipCop/PolitiFact**            | Fake news detection            | Amplitude encoding                     | QMFND \(Quantum Multimodal Fusion Model\) uses these two text/multimodal datasets to detect fake news on social media\. | \[98\]                        |
+| **Cardiovascular Disease Dataset**  | Disease diagnosis              | Angle encoding                         | QuCardio project, using cardiovascular disease data, achieved an accuracy of 97\.31% | \[94\]                        |
+| **Breast Cancer Dataset**           | Medical diagnosis              | Amplitude encoding, angle encoding     | Used to integrate quantum layers into CNN for diagnosis, demonstrating generalization ability on large\-scale medical data\. | \[125\]                       |
+| **Potentially Hazardous Asteroids** | Planetary classification       | \-                                     | Classified asteroids using VQCA and PegasosQSVM, with an accuracy rate of 98\.11%\. | \[9\], \[122\]                |
 
 ---
 
-## 4. 泛化能力评价指标体系
+## 3\. Detailed Corresponding Relationships between QML and Traditional Models
 
-| **评价指标类别**                     | **具体指标 / 表现**                                          | **文件中的证据与来源 (Evidence)**                            | **评价作用 (Generalization Insight)**                        |
-| ------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **预测准确率 (Accuracy)**            | **98.11%** (小行星分类) **99.58%** (图像分类) **97.27%** (CIFAR-10) | 参考 Section 7.2 中对 **VQCA [122]**、**SHQCNN [113]** 和 **BQNAS [132]** 的实验结果描述。 | 最直观的泛化能力体现，证明模型能正确处理未见过的测试样本。   |
-| **抗噪鲁棒性 (Robustness to Noise)** | 极大的噪声容忍度 (Great robustness)                          | 在 **QMFND [98]** (虚假新闻检测) 和 **SHQCNN [113]** 的描述中明确提到模型在 NISQ 设备噪声环境下仍能保持稳定。 | 评估模型在真实、不完美的量子硬件上的泛化稳定性。             |
-| **参数效率 (Parameter Efficiency)**  | 参数量减少 **>20%**                                          | 参考 **EQNAS [126]** 的研究成果，通过进化算法优化 PQC 结构，显著减少了参数。 | 依据奥卡姆剃刀原则，更少的参数往往意味着更好的泛化能力，避免过拟合。 |
-| **训练稳定性 (Stability)**           | 改进的对抗训练稳定性                                         | 参考 **ILL-QGAN [129]**，通过混合架构解决了经典 GAN 训练中常见的梯度消失或不稳定性问题。 | 确保模型在不同数据集分布下都能收敛到全局最优。               |
-| **计算时间缩减 (Time Reduction)**    | 仿真时间减少 **>68,000倍**                                   | 参考 Section 7.2 对量子内积电路仿真优化 **[13]** 的描述。    | 衡量在大规模数据泛化过程中，量子算法在计算复杂度上的潜在优势。 |
-| **量子 Dropout (Quantum Dropout)**   | 泛化能力提升 (Improving generalization)                      | 文件明确提到 **[116]** 引入了量子 Dropout 技术。             | **关键证据：** 文中直言该技术专门用于“改善模型的泛化能力 (improving the generalization of the model)”。 |
-| **样本效率 (Sample Efficiency)**     | 在低数据环境下保持高准确率 (**90.1%**)                       | 参考 **H-QNN [111]** 在处理小规模数据集时的表现。            | 证明 QML 模型在数据稀缺领域（如医疗）具有比传统深度学习更强的泛化潜力。 |
+### 3\.1 Supervised Learning Model Correspondence
+
+| QML Model       | Corresponding Traditional Model               |
+| --------------- | --------------------------------------------- |
+| **QSVM**        | SVM \(Kernel Methods\)                        |
+| **VQCA**        | Logistic Regression / Shallow Neural Networks |
+| **QNN**         | Classical Neural Networks \(ANN/MLP\)         |
+| **PegasosQSVM** | Pegasos\-SVM                                  |
+
+### 3\.2 Deep Learning Model Correspondence
+
+| QML Model | Corresponding Traditional Model        |
+| --------- | -------------------------------------- |
+| **QCNN**  | Convolutional Neural Network \(CNN\)   |
+| **QLSTM** | Long Short\-Term Memory \(LSTM\)       |
+| **QGAN**  | Generative Adversarial Network \(GAN\) |
+| **QBM**   | Boltzmann Machine                      |
+
+### 3\.3 Reinforcement Learning Model Correspondence
+
+| QML Model | Corresponding Traditional Model             |
+| --------- | ------------------------------------------- |
+| **QQL**   | Q\-Learning \(Tabular\)                     |
+| **QPG**   | Policy Gradient \(Policy Gradient Methods\) |
+
+### 3\.4 Optimization Algorithm Correspondence
+
+| QML Model | Corresponding Traditional Model                              |
+| --------- | ------------------------------------------------------------ |
+| **QAOA**  | Combinatorial Optimization Solvers \(e\.g\., Simulated Annealing\) |
+| **VQE**   | Classical Variational Methods                                |
+
+---
+
+## 4\. Generalization Ability Evaluation Metric System
+
+| **Evaluation Metric Category**   | **Specific Metrics / Performance**                           | **Evidence and Sources in the Document**                     | **Generalization Insight**                                   |
+| -------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Prediction Accuracy**          | **98\.11%** \(Asteroid Classification\), **99\.58%** \(Image Classification\), **97\.27%** \(CIFAR\-10\) | Refer to the experimental results of **VQCA \[122\]**, **SHQCNN \[113\]** and **BQNAS \[132\]** described in Section 7\.2\. | The most intuitive reflection of generalization ability, proving that the model can correctly process unseen test samples\. |
+| **Robustness to Noise**          | Great robustness                                             | Explicitly mentioned in the descriptions of **QMFND \[98\]** \(Fake News Detection\) and **SHQCNN \[113\]** that the models remain stable in the noisy environment of NISQ devices\. | Evaluate the generalization stability of the model on real, imperfect quantum hardware\. |
+| **Parameter Efficiency**         | Parameter count reduced by **\&gt;20%**                      | Refer to the research results of **EQNAS \[126\]**, which significantly reduced parameters by optimizing PQC structure via evolutionary algorithms\. | According to Occam\&\#39;s razor principle, fewer parameters often mean better generalization ability and avoid overfitting\. |
+| **Training Stability**           | Improved adversarial training stability                      | Refer to **ILL\-QGAN \[129\]**, which solved the common vanishing gradient or instability problems in classical GAN training through hybrid architecture\. | Ensure that the model can converge to the global optimum under different dataset distributions\. |
+| **Computational Time Reduction** | Simulation time reduced by **\&gt;68,000 times**             | Refer to the description of quantum inner product circuit simulation optimization **\[13\]** in Section 7\.2\. | Measure the potential advantages of quantum algorithms in computational complexity during large\-scale data generalization\. |
+| **Quantum Dropout**              | Improved generalization                                      | The document explicitly mentions that **\[116\]** introduced Quantum Dropout technology\. | **Key Evidence:** The text directly states that this technology is specifically used to \&\#34;improving the generalization of the model\&\#34;\. |
+| **Sample Efficiency**            | Maintain high accuracy \(**90\.1%**\) in low\-data environments | Refer to the performance of **H\-QNN \[111\]** when processing small\-scale datasets\. | Prove that QML models have stronger generalization potential than traditional deep learning in data\-scarce fields \(e\.g\., medical care\)\. |
+
+> 

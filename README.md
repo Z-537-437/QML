@@ -30,8 +30,8 @@ Metrics: Average Return , Win Rate , Stability , Params , Training Eff.
 
 | **Model Pair** | **Quantum Agent**     | **Classical Agent** |
 | -------------- | --------------------- | ------------------- |
-| **QPG vs PG**  | QPG (Policy Gradient) | PG                  |
-| **QQL vs QL**  | QQL (Q-Learning)      | QL (DQN)            |
+| **QPG vs PG**  | QPG  | PG                  |
+| **QQL vs QL**  | QQL       | QL             |
 
 ------
 

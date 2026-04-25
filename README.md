@@ -87,4 +87,4 @@ All experiments are provided as Jupyter Notebooks (`.ipynb`) for interactive exp
 ### Dataset Descriptions
 
 - **BAS Dataset**: Contains $N \times N$ binary images (horizontal or vertical stripes) and supports the injection of adjustable normalized Gaussian noise.
-- **Hypercube Environment**: A custom environment following Gymnasium standards, where the state space is defined by the vertices of an $ n $-dimensional hypercube (with $ n=6 $ used in experiments).
+- **Hypercube Environment**: A custom environment following Gymnasium standards, where the state space is defined by the vertices of an $n$-dimensional hypercube (with $n=6$ used in experiments).
